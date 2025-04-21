@@ -61,4 +61,14 @@ public class PetDTO {
     public void setId(long id) {
         this.id = id;
     }
+
+//    public PetDTO(long id, PetType type, String name, long ownerId, String notes, LocalDate birthDate)
+//    {
+//        this.id = id;
+//        this.type = type;
+//        this.name = name;
+//        this.ownerId = ownerId;
+//        this.notes = notes;
+//        this.birthDate = birthDate;
+//    }
 }

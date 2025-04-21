@@ -2,24 +2,28 @@ package com.udacity.jdnd.course3.critter.entity;
 
 import com.udacity.jdnd.course3.critter.pet.PetType;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "pets")
+@Table(name = "Pet")
+@Data
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+
 public class PetsData implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne(targetEntity = Customer.class, optional = false)
+    @ManyToOne(targetEntity = Customer.class,optional = false)
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
@@ -33,23 +37,4 @@ public class PetsData implements Serializable {
 
     private String notes;
 
-    // Utility method to update pet's notes
-    public void updateNotes(String newNotes) {
-        this.notes = newNotes;
-    }
-
-    // Check if pet is older than a certain number of years
-    public boolean isOlderThan(int years) {
-        return LocalDate.now().minusYears(years).isAfter(birth);
-    }
-
-    // Utility method to update pet's type
-    public void updatePetType(PetType newType) {
-        this.petType = newType;
-    }
-
-    // Utility method to calculate pet's age in years
-    public int getAgeInYears() {
-        return LocalDate.now().getYear() - birth.getYear();
-    }
 }

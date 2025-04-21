@@ -11,20 +11,20 @@ import java.util.List;
 
 @Service
 public class PetService {
-    @Autowired
+@Autowired
     private PetRepository petRepository;
-    @Autowired
+@Autowired
     private CustomerRepository customerRepository;
 
-    public List<PetsData> getAllPets(){
-        return petRepository.findAll();
-    }
-    public List<PetsData> getAllPetsByCustomerId(long Id){
-        return petRepository.getAllByCustomerId(Id);
-    }
-    public PetsData getAllPetsById(long Id){
-        return petRepository.getReferenceById(Id);
-    }
+public List<PetsData> getAllPets(){
+    return petRepository.findAll();
+}
+public List<PetsData> getAllPetsByCustomerId(long Id){
+    return petRepository.getAllByCustomerId(Id);
+}
+public PetsData getAllPetsById(long Id){
+    return petRepository.getReferenceById(Id);
+}
 
     public PetsData savePet(PetsData pet, long ownerId) {
         Customer customer = customerRepository.getReferenceById(ownerId);
